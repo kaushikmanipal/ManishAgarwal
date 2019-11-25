@@ -63,7 +63,8 @@ public class AssignmentTest {
 		Thread.sleep(5000L);
 	}
 
-	// To Verify whether application allows user to send the query in Contact Form Page
+	// To Verify whether application allows user to send the query in Contact Form
+	// Page
 	@Test
 	public void Scenario1() throws InterruptedException {
 		System.out.println("Test Scenario1 starts");
@@ -94,14 +95,14 @@ public class AssignmentTest {
 		// Clicking on "Send" button
 		contact.ClickSendLink();
 
-		//Scrolling to get confirmation message screenshot
+		// Scrolling to get confirmation message screenshot
 		Thread.sleep(5000L);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,100);");
-		
+
 		// Asserting if correct confirmation message is displayed or not
 		String expectedConfirmationMessage = "Thanks You for your message. It has been sent";
-		
+
 		// Getting webelement to pass on to assertion for text verification
 		WebElement element2 = generic.getElement("//form[@method='post']/div[@role='alert']", "xpath");
 
@@ -109,28 +110,29 @@ public class AssignmentTest {
 		generic.AssertText(expectedConfirmationMessage, element2);
 	}
 
-	// To Verify whether application allows registered admin to login into application
+	// To Verify whether application allows registered admin to login into
+	// application
 	@Test
 	public void Scenario2() {
 		System.out.println("Test Scenario2 starts");
 		// Asserting if correct page has been launched or not
 		generic.AssertTitle("Real Estate");
-		
-		//Clicking on "LOG IN/REGISTER" button
+
+		// Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
-		
-		//Asserting if "My Profile" page is launched or not
+
+		// Asserting if "My Profile" page is launched or not
 		// Getting webelement to pass on to assertion for text verification
 		WebElement element = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 
 		// Asserting if we have "My Profile" text present on the page or not
 		generic.AssertText("My Profile", element);
-		
-		//Entering username and password
+
+		// Entering username and password
 		lgn.sendUserName("admin");
 		lgn.sendPassword("admin@123");
-		
-		//Clicking on "Sign In" button
+
+		// Clicking on "Sign In" button
 		lgn.clickLoginBtn();
 
 		// Asserting if "Dashboard" page is opened or not
@@ -139,40 +141,42 @@ public class AssignmentTest {
 	}
 
 	// 3. To verify whether application allows the admin to recover the password
-	// a. Assuming expected title of page launched after clicking on "Lost Password" link is "Reset Password".
+	// a. Assuming expected title of page launched after clicking on "Lost Password"
+	// link is "Reset Password".
 	@Test
 	public void Scenario3() throws InterruptedException {
 		System.out.println("Test Scenario3 starts");
 		// Asserting if correct page has been launched or not
 		generic.AssertTitle("Real Estate");
 
-		//Clicking on "LOG IN/REGISTER" button
+		// Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
-		
-		//Asserting if "My Profile" page is launched or not
+
+		// Asserting if "My Profile" page is launched or not
 		// Getting webelement to pass on to assertion for text verification
 		WebElement element = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 
 		// Asserting if we have "My Profile" text present on the page or not
 		generic.AssertText("My Profile", element);
-				
+
 		// Scrolling the page
 		Thread.sleep(5000L);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,300);");
 
-		// Clicking on "Lost Your Password" link		
+		// Clicking on "Lost Your Password" link
 		lgn.clickLostPwdLink();
-		
+
 		// Getting webelement to pass on to assertion for text verification
 		WebElement element2 = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 		generic.AssertText("Lost Password", element2);
-		
-		//Entering valid email id and click on "Reset Password" button after above assertion is passed
+
+		// Entering valid email id and click on "Reset Password" button after above
+		// assertion is passed
 		lost.EnterEmail("revasharma@gmail.com");
 		lost.ClickSubmitButton();
 
-		//Asserting if "Reset Password" page has opened or not
+		// Asserting if "Reset Password" page has opened or not
 		generic.AssertTitle("Reset Password");
 
 	}
