@@ -70,7 +70,7 @@ public class AssignmentTest {
 		// Asserting if correct page has been launched or not
 		generic.AssertTitle("Real Estate");
 
-		// clicking on "Blog" link
+		// Clicking on "Blog" link
 		homePage.ClickBlogLink();
 
 		// Asserting if correct url has been launched or not
@@ -79,7 +79,7 @@ public class AssignmentTest {
 		// Clicking on "Drop us a line" button after assertion is passed.
 		blog.ClickContactLink();
 
-		// getting Webelement to pass on to assertion for text verification
+		// Getting Webelement to pass on to assertion for text verification
 		WebElement element = generic.getElement("//div[@role='form']/preceding-sibling::h4", "xpath");
 
 		// Asserting if we have "Contact Form" text on the page or not
@@ -91,7 +91,7 @@ public class AssignmentTest {
 		contact.EnterSubject("apartments");
 		contact.EnterMessage("looking for an appartment");
 
-		// clicking on "Send" button
+		// Clicking on "Send" button
 		contact.ClickSendLink();
 
 		//Scrolling to get confirmation message screenshot
@@ -102,7 +102,7 @@ public class AssignmentTest {
 		// Asserting if correct confirmation message is displayed or not
 		String expectedConfirmationMessage = "Thanks You for your message. It has been sent";
 		
-		// getting webelement to pass on to assertion for text verification
+		// Getting webelement to pass on to assertion for text verification
 		WebElement element2 = generic.getElement("//form[@method='post']/div[@role='alert']", "xpath");
 
 		// Asserting if we have correct confirmation message on the page or not
@@ -116,11 +116,11 @@ public class AssignmentTest {
 		// Asserting if correct page has been launched or not
 		generic.AssertTitle("Real Estate");
 		
-		//clicking on "LOG IN/REGISTER" button
+		//Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
 		
 		//Asserting if "My Profile" page is launched or not
-		// getting webelement to pass on to assertion for text verification
+		// Getting webelement to pass on to assertion for text verification
 		WebElement element = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 
 		// Asserting if we have "My Profile" text present on the page or not
@@ -146,25 +146,25 @@ public class AssignmentTest {
 		// Asserting if correct page has been launched or not
 		generic.AssertTitle("Real Estate");
 
-		//clicking on "LOG IN/REGISTER" button
+		//Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
 		
 		//Asserting if "My Profile" page is launched or not
-		// getting webelement to pass on to assertion for text verification
+		// Getting webelement to pass on to assertion for text verification
 		WebElement element = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 
 		// Asserting if we have "My Profile" text present on the page or not
 		generic.AssertText("My Profile", element);
 				
-		//scrolling the page
+		// Scrolling the page
 		Thread.sleep(5000L);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,300);");
 
-		//Clicking on "Lost Your Password" link		
+		// Clicking on "Lost Your Password" link		
 		lgn.clickLostPwdLink();
 		
-		// getting webelement to pass on to assertion for text verification
+		// Getting webelement to pass on to assertion for text verification
 		WebElement element2 = generic.getElement("//nav[@id='breadcrumbs']/preceding-sibling::h2", "xpath");
 		generic.AssertText("Lost Password", element2);
 		
