@@ -5,6 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 /**
  * 
@@ -15,6 +17,7 @@ import org.openqa.selenium.WebElement;
  */
 public class GenericMethods {
 	WebDriver driver ; 
+	
 	
 	public GenericMethods(WebDriver driver){
 		this.driver = driver;
@@ -41,6 +44,10 @@ public class GenericMethods {
 			element  = driver.findElement(By.name(locator));
 		}else if(type.equals("xpath")){
 			element = driver.findElement(By.xpath(locator));
+		}else if(type.equals("partialLinkText")){
+			element = driver.findElement(By.partialLinkText(locator));
+		}else if(type.equals("linkText")){
+			element = driver.findElement(By.linkText(locator));
 		}
 		if(checkSingleEntry(locator, type)){
 			System.out.println("Element Found and Returned");
@@ -81,4 +88,42 @@ public class GenericMethods {
 	public boolean checkSingleEntry(String locator, String type){
 		return getElementsAsList(locator, type).size() ==1;
 	}
+	
+	
+	public void AssertTitle(String expectedTitle)
+	{
+		String actualTitle = driver.getTitle();
+		Assert.assertEquals(actualTitle, expectedTitle, "Assertion has Failed and hence the Test Case");
+		
+	}
+	
+	public void AssertText(String expectedText, WebElement element)
+	{
+		String actualText = element.getText();
+		Assert.assertEquals(actualText, expectedText, "Assertion has Failed and hence the Test Case");
+		
+	}
+	
+	public void AssertAttributeValue(String expectedAttrValue, String attributeName, WebElement element)
+	{
+		String actualAttrValue=element.getAttribute(attributeName);
+		Assert.assertEquals(actualAttrValue, expectedAttrValue, "Assertion has Failed and hence the Test Case");
+		
+	}
+	
+	public void AssertUrl(String expectedUrl)
+	{
+		String actualUrl=driver.getCurrentUrl();
+		Assert.assertEquals(actualUrl, expectedUrl, "Assertion has Failed and hence the Test Case");
+		
+	}
+	
+	public void AssertSelected(WebElement element)
+	{
+		boolean actualSelection=element.isSelected();
+		Assert.assertTrue(actualSelection, "Assertion has Failed and hence the Test Case");
+		
+	}
+	
+	
 }

@@ -66,7 +66,18 @@ public class ScreenShot {
 
 	public void captureScreenShot(String fileName){
 		
-		String path =  "C:\\Users\\Naveen\\Desktop\\screenshots\\";
+		String path =  System.getProperty("user.dir")+"\\Failure Screenshot\\";
+		
+		GregorianCalendar calendar = new GregorianCalendar(); 
+		
+		int date =  calendar.get(Calendar.DATE); 
+		int minute = calendar.get(Calendar.MINUTE);
+		int second = calendar.get(Calendar.SECOND); 
+		
+		
+		String fileName2 = new Integer(date).toString() + "-" + new Integer(minute).toString() +"-" +
+					new Integer(second).toString() +".png"; 
+		
 	
 		// 1. create file 
 		// 2. capture screenshot from selenium 
@@ -76,7 +87,7 @@ public class ScreenShot {
 			TakesScreenshot takeScreenShot  = (TakesScreenshot) driver; 
 			File file = takeScreenShot.getScreenshotAs(OutputType.FILE);
 			
-			FileUtils.copyFile(file, new File(path +fileName+".png"));
+			FileUtils.copyFile(file, new File(path +fileName+"_"+fileName2));
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
