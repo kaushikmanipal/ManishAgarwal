@@ -128,8 +128,8 @@ public class AssignmentTest {
 		generic.AssertText("My Profile", element);
 
 		// Entering username and password
-		lgn.sendUserName("admin");
-		lgn.sendPassword("admin@123");
+		lgn.sendUserName("revasharma@gmail.com");
+		lgn.sendPassword("reva321");
 
 		// Clicking on "Sign In" button
 		lgn.clickLoginBtn();
