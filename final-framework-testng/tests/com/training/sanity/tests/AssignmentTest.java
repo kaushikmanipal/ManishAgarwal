@@ -61,6 +61,9 @@ public class AssignmentTest {
 		// open the browser
 		driver.get(baseUrl);
 		Thread.sleep(5000L);
+		
+		// Asserting if correct page has been launched or not
+		generic.AssertTitle("Real Estate");
 	}
 
 	// To Verify whether application allows user to send the query in Contact Form
@@ -68,9 +71,7 @@ public class AssignmentTest {
 	@Test
 	public void Scenario1() throws InterruptedException {
 		System.out.println("Test Scenario1 starts");
-		// Asserting if correct page has been launched or not
-		generic.AssertTitle("Real Estate");
-
+	
 		// Clicking on "Blog" link
 		homePage.ClickBlogLink();
 
@@ -115,9 +116,7 @@ public class AssignmentTest {
 	@Test
 	public void Scenario2() {
 		System.out.println("Test Scenario2 starts");
-		// Asserting if correct page has been launched or not
-		generic.AssertTitle("Real Estate");
-
+		
 		// Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
 
@@ -141,14 +140,10 @@ public class AssignmentTest {
 	}
 
 	// 3. To verify whether application allows the admin to recover the password
-	// a. Assuming expected title of page launched after clicking on "Lost Password"
-	// link is "Reset Password".
 	@Test
 	public void Scenario3() throws InterruptedException {
 		System.out.println("Test Scenario3 starts");
-		// Asserting if correct page has been launched or not
-		generic.AssertTitle("Real Estate");
-
+		
 		// Clicking on "LOG IN/REGISTER" button
 		homePage.ClickSigninLink();
 
@@ -177,7 +172,9 @@ public class AssignmentTest {
 		lost.ClickSubmitButton();
 
 		// Asserting if "Reset Password" page has opened or not
-		generic.AssertTitle("Reset Password");
+		// Getting webelement to pass on to assertion for text verification
+		WebElement element3 = generic.getElement("//p", "xpath");
+		generic.AssertText("A confirmation link has been sent to your email address", element3);
 
 	}
 
